@@ -1,4 +1,4 @@
 ﻿# AI-beta-v2
 
-## yarn install
-## yarn start  
+### yarn install
+### yarn start  
