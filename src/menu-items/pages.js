@@ -22,14 +22,14 @@ const pages = {
       icon: icons.LoginOutlined,
       target: true
     },
-    {
-      id: 'register1',
-      title: '註冊',
-      type: 'item',
-      url: '/register',
-      icon: icons.ProfileOutlined,
-      target: true
-    }
+    // {
+    //   id: 'register1',
+    //   title: '註冊',
+    //   type: 'item',
+    //   url: '/register',
+    //   icon: icons.ProfileOutlined,
+    //   target: true
+    // }
   ]
 };
 
