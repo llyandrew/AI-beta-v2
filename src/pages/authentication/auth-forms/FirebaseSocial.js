@@ -4,7 +4,7 @@ import { useMediaQuery, Button, Stack } from '@mui/material';
 
 // assets
 import Google from 'assets/images/icons/google.svg';
-import Twitter from 'assets/images/icons/twitter.svg';
+// import Twitter from 'assets/images/icons/twitter.svg';
 import Facebook from 'assets/images/icons/facebook.svg';
 
 // ==============================|| FIREBASE - SOCIAL BUTTON ||============================== //
@@ -17,9 +17,9 @@ const FirebaseSocial = () => {
     // login || singup
   };
 
-  const twitterHandler = async () => {
-    // login || singup
-  };
+  // const twitterHandler = async () => {
+  //   // login || singup
+  // };
 
   const facebookHandler = async () => {
     // login || singup
@@ -41,7 +41,7 @@ const FirebaseSocial = () => {
       >
         {!matchDownSM && 'Google'}
       </Button>
-      <Button
+      {/* <Button
         variant="outlined"
         color="secondary"
         fullWidth={!matchDownSM}
@@ -49,7 +49,7 @@ const FirebaseSocial = () => {
         onClick={twitterHandler}
       >
         {!matchDownSM && 'Twitter'}
-      </Button>
+      </Button> */}
       <Button
         variant="outlined"
         color="secondary"

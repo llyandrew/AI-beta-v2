@@ -27,14 +27,24 @@ export default function FloatLabelDemo() {
 
     const [selectedArea, setSelectedArea] = useState(null);
     const area = [
-        { name: '台北市', code: 'taipei' },
-        { name: '新北市', code: 'newTaipei' },
-        { name: '桃園市', code: 'taoyung' },
-        { name: '基隆市', code: 'keelung' },
-        { name: '新竹市', code: 'shintzu' },
-        { name: '苗栗縣', code: 'miaoli' },
-        { name: '台中市', code: 'taichung' },
-        { name: '嘉義縣', code: 'chiayi' },
+        { name: '台北市', code: 'Taipei' },
+        { name: '新北市', code: 'NewTaipei' },
+        { name: '桃園市', code: 'Taoyuan' },
+        { name: '基隆市', code: 'Keelung' },
+        { name: '新竹市', code: 'Hsinchu_country' },
+        { name: '新竹縣', code: 'Hsinchu_city' },
+        { name: '苗栗縣', code: 'Miaoli' },
+        { name: '台中市', code: 'Taichung' },
+        { name: '彰化縣', code: 'Changhua' },
+        { name: '南投縣', code: 'Nantou' },
+        { name: '雲林縣', code: 'Yunlin' },
+        { name: '嘉義縣', code: 'Chiayi' },
+        { name: '台南市', code: 'Tainan' },
+        { name: '高雄市', code: 'Kaohsiung' },
+        { name: '屏東縣', code: 'Pingtung ' },
+        { name: '宜蘭縣', code: 'Yilan' },
+        { name: '花蓮縣', code: 'Hualien' },
+        { name: '台東縣', code: 'Taitung' }
     ];
 
     const load = () => {
@@ -69,7 +79,7 @@ export default function FloatLabelDemo() {
             <div style={{ width: '40px' }}></div>
             
             <div className="card flex flex-wrap justify-content-center gap-3"> 
-                <Button label="下載檔案" icon="pi pi-download"  color="primary-500" loading={loading} onClick={load} raised/>
+                <Button label="下載檔案" icon="pi pi-download"  style={{ backgroundColor: 'var(--blue-300)', color: 'var(--primary-color-text)'}} loading={loading} onClick={load} raised/>
             </div>
 
         </div>
