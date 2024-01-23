@@ -1,22 +1,23 @@
 
 import FileUpload from './FileUpload';
 import FileChoose from './FileChoose';
+import FileDownload from './FileDownload';
 import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
 
 // material-ui
 import {
   Grid,
   Typography,
-  Button
+//  Button
 } from '@mui/material';
 
 // ==============================|| AI beta 評鑑檢查 ||============================== //
 
 const AntIconsDefault = () => {
-  const buttonStyle = {
-    fontSize: '24px',
-    background: 'linear-gradient(-225deg, #7DE2FC 0%, #B9B6E5 100%)',
-  };
+  // const buttonStyle = {
+  //   fontSize: '20px',
+  //   background: 'linear-gradient(-225deg, #7DE2FC 0%, #B9B6E5 100%)',
+  // };
   return (
     <Grid>
       <Grid >
@@ -66,10 +67,12 @@ const AntIconsDefault = () => {
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <AnalyticEcommerce title="上次AI評鑑時間" count="11/25" extra="完成度為81%" />
         </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={3} container direction="row" alignItems="flex-shrink">
+        {/* <Grid item container direction="row" alignItems="flex-shrink">
           <Button variant="contained" color="primary" style={buttonStyle} raised>下載上次評鑑資料夾</Button>
-        </Grid>
+        </Grid> */}
       </Grid>
+      <br />
+      <FileDownload />
       <br /> <br />
       <FileUpload />
     </Grid>

@@ -7,14 +7,14 @@ import { Button } from 'primereact/button';
 import { Tooltip } from 'primereact/tooltip';
 import { Tag } from 'primereact/tag';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import 'primeflex/primeflex.css';  
+import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 
 export default function TemplateDemo() {
     const toast = useRef(null);
     const [totalSize, setTotalSize] = useState(0);
     const fileUploadRef = useRef(null);
-    
+
     const onTemplateSelect = (e) => {
         let _totalSize = totalSize;
         let files = e.files;
@@ -110,4 +110,3 @@ export default function TemplateDemo() {
         </div>
     )
 }
-        

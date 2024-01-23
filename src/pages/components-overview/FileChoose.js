@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Dropdown } from 'primereact/dropdown';
 import { Button } from 'primereact/button';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import 'primeflex/primeflex.css';  
+import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 
 export default function FloatLabelDemo() {
@@ -77,12 +77,11 @@ export default function FloatLabelDemo() {
             </span>
 
             <div style={{ width: '40px' }}></div>
-            
-            <div className="card flex flex-wrap justify-content-center gap-3"> 
-                <Button label="下載檔案" icon="pi pi-download"  style={{ backgroundColor: 'var(--blue-300)', color: 'var(--primary-color-text)'}} loading={loading} onClick={load} raised/>
+
+            <div className="card flex flex-wrap justify-content-center gap-3">
+                <Button label="下載檔案範本" icon="pi pi-download" style={{ backgroundColor: 'var(--blue-300)', color: 'var(--primary-color-text)' }} loading={loading} onClick={load} raised />
             </div>
 
         </div>
     )
 }
-        
