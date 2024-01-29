@@ -58,15 +58,13 @@ export default function FloatLabelDemo() {
     return (
         <div className="card">
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', rowGap: '30px' }}>
-                <div className="flex flex-row">
+                {/* <div className="flex flex-row"></div> 可以把三個按鈕包住 變成三個按鈕為一長排(因目前有影片在右側 故不使用) */}
                     <div>
                         <span className="p-float-label">
                             <Dropdown inputId="id-area" value={selectedArea} onChange={(e) => setSelectedArea(e.value)} options={area} optionLabel="name" className="w-full md:w-14rem" />
                             <label htmlFor="id-area">選擇地區</label>
                         </span>
                     </div>
-
-                    <div style={{ width: '20px' }}></div>
 
                     <div>
                         <span className="p-float-label">
@@ -75,15 +73,13 @@ export default function FloatLabelDemo() {
                         </span>
                     </div>
 
-                    <div style={{ width: '20px' }}></div>
-
                     <div>
                         <span className="p-float-label">
                             <Dropdown inputId="id-year" value={selectedYear} onChange={(e) => setSelectedYear(e.value)} options={years} optionLabel="name" className="w-full md:w-14rem" />
                             <label htmlFor="id-year">選擇評鑑年度</label>
                         </span>
                     </div>
-                </div>
+                
                 <div className="flex flex-row">
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <div className="selected-values" style={{ fontSize: '16px', textAlign: 'center' }}>
