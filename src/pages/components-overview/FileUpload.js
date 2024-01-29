@@ -57,6 +57,8 @@ export default function TemplateDemo() {
                 {uploadButton}
                 {cancelButton}
                 <div className="flex align-items-center gap-3 ml-auto">
+                    <span>目前AI分析:台中市-長照-113年</span>
+                    <span></span>
                     <span>{formatedValue} / 100 MB</span>
                     <ProgressBar value={value} showValue={false} style={{ width: '10rem', height: '12px' }}></ProgressBar>
                 </div>
@@ -83,7 +85,7 @@ export default function TemplateDemo() {
     const emptyTemplate = () => {
         return (
             <div className="flex align-items-center flex-column">
-                <i className="pi pi-image mt-3 p-5" style={{ fontSize: '5em', borderRadius: '50%', backgroundColor: 'var(--surface-b)', color: 'var(--surface-d)' }}></i>
+                <i className="pi pi-file mt-3 p-5" style={{ fontSize: '5em', borderRadius: '50%', backgroundColor: 'var(--surface-b)', color: 'var(--surface-d)' }}></i>
                 <span style={{ fontSize: '1.2em', color: 'var(--text-color-secondary)' }} className="my-5">
                     將檔案拉至此處上傳
                 </span>
@@ -91,9 +93,9 @@ export default function TemplateDemo() {
         );
     };
 
-    const chooseOptions = { icon: 'pi pi-fw pi-file', iconOnly: false, className: 'custom-choose-btn p-button-rounded p-button-outlined' };
-    const uploadOptions = { icon: 'pi pi-fw pi-cloud-upload', iconOnly: false, className: 'custom-upload-btn p-button-success p-button-rounded p-button-outlined' };
-    const cancelOptions = { icon: 'pi pi-fw pi-times', iconOnly: false, className: 'custom-cancel-btn p-button-danger p-button-rounded p-button-outlined' };
+    const chooseOptions = { label: '點此選擇檔案', icon: 'pi pi-fw pi-folder', iconOnly: false, className: 'custom-choose-btn p-button-rounded p-button-outlined' };
+    const uploadOptions = { label: '上傳檔案分析', icon: 'pi pi-fw pi-cloud-upload', iconOnly: false, className: 'custom-upload-btn p-button-success p-button-rounded p-button-outlined' };
+    const cancelOptions = { label: '清空檔案', icon: 'pi pi-fw pi-times', iconOnly: false, className: 'custom-cancel-btn p-button-danger p-button-rounded p-button-outlined' };
 
     return (
         <div>
