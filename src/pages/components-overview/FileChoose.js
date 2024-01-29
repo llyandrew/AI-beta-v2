@@ -56,32 +56,62 @@ export default function FloatLabelDemo() {
     };
 
     return (
-        <div className="card flex justify-content-left">
-            <span className="p-float-label">
-                <Dropdown inputId="id-area" value={selectedArea} onChange={(e) => setSelectedArea(e.value)} options={area} optionLabel="name" className="w-full md:w-14rem" />
-                <label htmlFor="id-area">選擇地區</label>
-            </span>
+        <div className="card">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', rowGap: '30px' }}>
+                <div className="flex flex-row">
+                    <div>
+                        <span className="p-float-label">
+                            <Dropdown inputId="id-area" value={selectedArea} onChange={(e) => setSelectedArea(e.value)} options={area} optionLabel="name" className="w-full md:w-14rem" />
+                            <label htmlFor="id-area">選擇地區</label>
+                        </span>
+                    </div>
 
-            <div style={{ width: '20px' }}></div>
+                    <div style={{ width: '20px' }}></div>
 
-            <span className="p-float-label">
-                <Dropdown inputId="id-org" value={selectedOrg} onChange={(e) => setSelectedOrg(e.value)} options={org} optionLabel="name" className="w-full md:w-14rem" />
-                <label htmlFor="id-org">選擇機構類型</label>
-            </span>
+                    <div>
+                        <span className="p-float-label">
+                            <Dropdown inputId="id-org" value={selectedOrg} onChange={(e) => setSelectedOrg(e.value)} options={org} optionLabel="name" className="w-full md:w-14rem" />
+                            <label htmlFor="id-org">選擇機構類型</label>
+                        </span>
+                    </div>
 
-            <div style={{ width: '20px' }}></div>
+                    <div style={{ width: '20px' }}></div>
 
-            <span className="p-float-label">
-                <Dropdown inputId="id-year" value={selectedYear} onChange={(e) => setSelectedYear(e.value)} options={years} optionLabel="name" className="w-full md:w-14rem" />
-                <label htmlFor="id-year">選擇評鑑年度</label>
-            </span>
+                    <div>
+                        <span className="p-float-label">
+                            <Dropdown inputId="id-year" value={selectedYear} onChange={(e) => setSelectedYear(e.value)} options={years} optionLabel="name" className="w-full md:w-14rem" />
+                            <label htmlFor="id-year">選擇評鑑年度</label>
+                        </span>
+                    </div>
+                </div>
+                <div className="flex flex-row">
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div className="selected-values" style={{ fontSize: '16px', textAlign: 'center' }}>
+                            {selectedArea && selectedOrg && selectedYear
+                                ? (
+                                    (selectedArea.code === 'Taipei' && selectedOrg.code === 'dayCare' && selectedYear.code === 'year110') ||
+                                    (selectedArea.code === 'Taipei' && selectedOrg.code === 'dayCare' && selectedYear.code === 'year112')
+                                )
+                                    ? '此縣市尚未公告相關範本'
+                                    : `選擇的範本： ${selectedArea.name} - ${selectedOrg.name} - ${selectedYear.name}範本`
+                                : '請選擇所需下載的範本'}
+                        </div>
+                    </div>
 
-            <div style={{ width: '40px' }}></div>
+                    <div style={{ width: '20px' }}></div>
 
-            <div className="card flex flex-wrap justify-content-center gap-3">
-                <Button label="下載檔案範本" icon="pi pi-download" style={{ backgroundColor: 'var(--blue-300)', color: 'var(--primary-color-text)' }} loading={loading} onClick={load} raised />
+                    <div>
+                        <Button
+                            label="下載該檔案範本"
+                            icon="pi pi-download"
+                            style={{ backgroundColor: 'var(--blue-300)', color: 'var(--primary-color-text)' }}
+                            loading={loading}
+                            onClick={load}
+                            raised
+                        />
+                    </div>
+                </div>
             </div>
-
         </div>
     )
 }
