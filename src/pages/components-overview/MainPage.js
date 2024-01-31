@@ -52,7 +52,7 @@ const AntIconsDefault = () => {
           </Typography>{' '}
           <br /> <br />
           <Typography style={{ fontSize: '20px', color: 'gray' }}>
-            AI Beta協助你更快的查閱準備資料是否完整，並且知道哪些檔案需要調整。
+            AI Beta協助你更快的查閱準備資料是否完整，<br />並且知道哪些檔案需要調整。
           </Typography>
           <Typography style={{ fontSize: '20px', color: 'gray' }}>讓你在評鑑前更快速與安心地準備檔案。</Typography> <br />
           <Typography style={{ fontSize: '20px', color: 'gray' }}>以下提供不同類型的範本供您參考 !</Typography> <br />
