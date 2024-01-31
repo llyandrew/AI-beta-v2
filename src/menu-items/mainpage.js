@@ -20,34 +20,13 @@ const icons = {
 
 // ==============================|| MENU ITEMS - UTILITIES ||============================== //
 
-const utilities = {
+const mainpage = {
   id: 'utilities',
   title: 'AI beta 分析',
   type: 'group',
   children: [
-    // {
-    //   id: 'util-typography',
-    //   title: 'Typography',
-    //   type: 'item',
-    //   url: '/typography',
-    //   icon: icons.FontSizeOutlined
-    // },
-    // {
-    //   id: 'util-color',
-    //   title: 'Color',
-    //   type: 'item',
-    //   url: '/color',
-    //   icon: icons.BgColorsOutlined
-    // },
-    // {
-    //   id: 'util-shadow',
-    //   title: 'Shadow',
-    //   type: 'item',
-    //   url: '/shadow',
-    //   icon: icons.BarcodeOutlined
-    // },
     {
-      id: 'ant-icons',
+      id: 'main-page',
       title: 'AI 評鑑檢查',
       type: 'item',
       url: '/icons/ant',
@@ -57,4 +36,4 @@ const utilities = {
   ]
 };
 
-export default utilities;
+export default mainpage;

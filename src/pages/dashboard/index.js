@@ -19,53 +19,11 @@ import {
 } from '@mui/material';
 
 // project import
-import OrdersTable from './OrdersTable';
-import IncomeAreaChart from './IncomeAreaChart';
-import MonthlyBarChart from './MonthlyBarChart';
-//import ReportAreaChart from './ReportAreaChart';
-//import SalesColumnChart from './SalesColumnChart';
+import SmallitemTable from './SmallitemTable';
+import WeekMonthChart from './WeekMonthChart';
+import BigItemChart from './BigItemChart';
 import MainCard from 'components/MainCard';
 import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
-
-// assets
-// import { GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
-// import avatar1 from 'assets/images/users/avatar-1.png';
-// import avatar2 from 'assets/images/users/avatar-2.png';
-// import avatar3 from 'assets/images/users/avatar-3.png';
-// import avatar4 from 'assets/images/users/avatar-4.png';
-
-// avatar style
-// const avatarSX = {
-//   width: 36,
-//   height: 36,
-//   fontSize: '1rem'
-// };
-
-// action style
-// const actionSX = {
-//   mt: 0.75,
-//   ml: 1,
-//   top: 'auto',
-//   right: 'auto',
-//   alignSelf: 'flex-start',
-//   transform: 'none'
-// };
-
-// sales report status
-// const status = [
-//   {
-//     value: 'today',
-//     label: 'Today'
-//   },
-//   {
-//     value: 'month',
-//     label: 'This Month'
-//   },
-//   {
-//     value: 'year',
-//     label: 'This Year'
-//   }
-// ];
 
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
@@ -127,7 +85,7 @@ const DashboardDefault = () => {
         </Grid>
         <MainCard content={false} sx={{ mt: 1.5 }}>
           <Box sx={{ pt: 1, pr: 2 }}>
-            <IncomeAreaChart slot={slot} />
+            <WeekMonthChart slot={slot} />
           </Box>
         </MainCard>
       </Grid>
@@ -148,7 +106,7 @@ const DashboardDefault = () => {
               <Typography variant="h3">81%</Typography>
             </Stack>
           </Box>
-          <MonthlyBarChart />
+          <BigItemChart />
         </MainCard>
       </Grid>
       {/* 項目細項完成度 */}
@@ -196,7 +154,7 @@ const DashboardDefault = () => {
           <Grid item />
         </Grid>
         <MainCard sx={{ mt: 2 }} content={false}>
-          <OrdersTable table={table}/>
+          <SmallitemTable table={table}/>
         </MainCard>
       </Grid>
       <Grid item xs={12} md={5} lg={4}>
@@ -250,7 +208,7 @@ const DashboardDefault = () => {
         </Grid>
         <MainCard content={false} sx={{ mt: 1.5 }}>
           <Box sx={{ pt: 1, pr: 2 }}>
-            <IncomeAreaChart slot={slot} />
+            <WeekMonthChart slot={slot} />
           </Box>
         </MainCard>
       </Grid>
@@ -271,7 +229,7 @@ const DashboardDefault = () => {
               <Typography variant="h3">81%</Typography>
             </Stack>
           </Box>
-          <MonthlyBarChart />
+          <BigItemChart />
         </MainCard>
       </Grid>
       {/* 項目細項完成度 */}
@@ -319,7 +277,7 @@ const DashboardDefault = () => {
           <Grid item />
         </Grid>
         <MainCard sx={{ mt: 2 }} content={false}>
-          <OrdersTable table={table}/>
+          <SmallitemTable table={table}/>
         </MainCard>
       </Grid>
       <Grid item xs={12} md={5} lg={4}>

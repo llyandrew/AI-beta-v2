@@ -9,7 +9,7 @@ const icons = {
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
 
-const pages = {
+const authpage = {
   id: 'authentication',
   title: '註冊/登入',
   type: 'group',
@@ -33,4 +33,4 @@ const pages = {
   ]
 };
 
-export default pages;
+export default authpage;
