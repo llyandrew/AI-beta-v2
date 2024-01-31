@@ -36,7 +36,7 @@ const rowsB = [
   createData(5, '服務對象團體或社區活動辦理情形', 100, 1),
   createData(6, '社區資源聯結及運用情形', 100, 1),
   createData(7, '與家屬互動及提供服務情形', 25, 2),
-  createData(8, '提供服務對象例行及必要之醫療服務情形', 89, 2),
+  createData(8, '提供服務對象例行及必要之醫療服務情形', 89, 2)
 ];
 
 const rowsC = [
@@ -214,8 +214,11 @@ const OrderTable = ({ table }) => {
         >
           <OrderTableHead order={order} orderBy={orderBy} />
           <TableBody>
-            {stableSort(table === 'rowsA' ? rowsA : table === 'rowsB' ? rowsB : table === 'rowsC' ? rowsC : rowsD, getComparator(order, orderBy)).map((row, index) => {
-              const isItemSelected = isSelected(row.trackingNo); 
+            {stableSort(
+              table === 'rowsA' ? rowsA : table === 'rowsB' ? rowsB : table === 'rowsC' ? rowsC : rowsD,
+              getComparator(order, orderBy)
+            ).map((row, index) => {
+              const isItemSelected = isSelected(row.trackingNo);
               const labelId = `enhanced-table-checkbox-${index}`;
 
               return (
@@ -249,6 +252,6 @@ const OrderTable = ({ table }) => {
       </TableContainer>
     </Box>
   );
-}
+};
 
 export default OrderTable;

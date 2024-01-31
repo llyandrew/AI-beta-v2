@@ -2,19 +2,17 @@ import { useState } from 'react';
 
 // material-ui
 import {
-//  Avatar,
-//  AvatarGroup,
   Box,
   Button,
   Grid,
   List,
-//  ListItemAvatar,
+  //  ListItemAvatar,
   ListItemButton,
-//  ListItemSecondaryAction,
-//  ListItemText,
-//  MenuItem,
+  //  ListItemSecondaryAction,
+  //  ListItemText,
+  //  MenuItem,
   Stack,
-//  TextField,
+  //  TextField,
   Typography
 } from '@mui/material';
 
@@ -36,7 +34,9 @@ const DashboardDefault = () => {
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
       {/* row 1 */}
       <Grid item xs={12} sx={{ mb: -2.25 }}>
-        <Typography variant="h2" style={{ color: '#0250c5' }}>儀表板</Typography>
+        <Typography variant="h2" style={{ color: '#0250c5' }}>
+          儀表板
+        </Typography>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <AnalyticEcommerce title="最近一次評鑑完成度" count="81%" percentage={15.3} extra="15.3%" />
@@ -57,7 +57,11 @@ const DashboardDefault = () => {
       <Grid item xs={12} md={7} lg={8}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item xs={12} sx={{ mb: -2.25 }}>
-            <br /><Typography variant="h2" style={{ color: '#0250c5' }}>評鑑進度</Typography>  <br />
+            <br />
+            <Typography variant="h2" style={{ color: '#0250c5' }}>
+              評鑑進度
+            </Typography>{' '}
+            <br />
           </Grid>
           <Grid item>
             <Typography variant="h4">評鑑完成進度時間表</Typography>
@@ -92,8 +96,10 @@ const DashboardDefault = () => {
       <Grid item xs={12} md={5} lg={4}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-          <br /><br /><br />
-            <Typography variant="h4" >各項目完成度</Typography>
+            <br />
+            <br />
+            <br />
+            <Typography variant="h4">各項目完成度</Typography>
           </Grid>
           <Grid item />
         </Grid>
@@ -114,7 +120,7 @@ const DashboardDefault = () => {
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
             <Typography variant="h4">評鑑項目細項AI符合率</Typography>
-            </Grid>
+          </Grid>
           <Grid item>
             <Stack direction="row" alignItems="center" spacing={0}>
               <Button
@@ -154,33 +160,42 @@ const DashboardDefault = () => {
           <Grid item />
         </Grid>
         <MainCard sx={{ mt: 2 }} content={false}>
-          <SmallitemTable table={table}/>
+          <SmallitemTable table={table} />
         </MainCard>
       </Grid>
       <Grid item xs={12} md={5} lg={4}>
-          <Grid container alignItems="center" justifyContent="space-between">
-            <Grid item><p/>
-              <Typography variant="h4">細項關鍵字報告</Typography>
-            </Grid>
-            <Grid item />
+        <Grid container alignItems="center" justifyContent="space-between">
+          <Grid item>
+            <p />
+            <Typography variant="h4">細項關鍵字報告</Typography>
           </Grid>
-          <MainCard sx={{ mt: 2 }} content={false}>
-            <List sx={{ p: 0, '& .MuiListItemButton-root': { py: 2 } }}>
-              <ListItemButton divider>
-                <Typography variant="h5">缺少的細項關鍵字 :</Typography>
-              </ListItemButton>
-              <ListItemButton divider>
-                <Typography variant="h5">長照機構<br />教育訓練</Typography>
-              </ListItemButton>
-            </List>
-          </MainCard>
+          <Grid item />
         </Grid>
+        <MainCard sx={{ mt: 2 }} content={false}>
+          <List sx={{ p: 0, '& .MuiListItemButton-root': { py: 2 } }}>
+            <ListItemButton divider>
+              <Typography variant="h5">缺少的細項關鍵字 :</Typography>
+            </ListItemButton>
+            <ListItemButton divider>
+              <Typography variant="h5">
+                長照機構
+                <br />
+                教育訓練
+              </Typography>
+            </ListItemButton>
+          </List>
+        </MainCard>
+      </Grid>
 
-            {/* 分項完成度 */}
-            <Grid item xs={12} md={7} lg={8}>
+      {/* 分項完成度 */}
+      <Grid item xs={12} md={7} lg={8}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item xs={12} sx={{ mb: -2.25 }}>
-            <br /> <Typography variant="h2" style={{ color: '#0250c5' }}>督察進度</Typography>  <br />
+            <br />{' '}
+            <Typography variant="h2" style={{ color: '#0250c5' }}>
+              督察進度
+            </Typography>{' '}
+            <br />
           </Grid>
           <Grid item>
             <Typography variant="h4">督察完成進度時間表</Typography>
@@ -215,7 +230,9 @@ const DashboardDefault = () => {
       <Grid item xs={12} md={5} lg={4}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            <br /><br /><br />
+            <br />
+            <br />
+            <br />
             <Typography variant="h4">各項目完成度</Typography>
           </Grid>
           <Grid item />
@@ -277,12 +294,13 @@ const DashboardDefault = () => {
           <Grid item />
         </Grid>
         <MainCard sx={{ mt: 2 }} content={false}>
-          <SmallitemTable table={table}/>
+          <SmallitemTable table={table} />
         </MainCard>
       </Grid>
       <Grid item xs={12} md={5} lg={4}>
         <Grid container alignItems="center" justifyContent="space-between">
-          <Grid item><p/>
+          <Grid item>
+            <p />
             <Typography variant="h4">細項關鍵字報告</Typography>
           </Grid>
           <Grid item />
@@ -293,12 +311,21 @@ const DashboardDefault = () => {
               <Typography variant="h5">缺少的細項關鍵字 :</Typography>
             </ListItemButton>
             <ListItemButton divider>
-              <Typography variant="h5">長照機構<br />教育訓練</Typography>
+              <Typography variant="h5">
+                長照機構
+                <br />
+                教育訓練
+              </Typography>
             </ListItemButton>
           </List>
         </MainCard>
-      </Grid> 
-      <Typography variant="h5" style={{ color: '#808080', textAlign: 'right', marginLeft: '400px' }} ><br/><br/>此為 AI 自動分析，僅確認關鍵字皆符合，請再次確認評鑑內容已填寫完整<br/></Typography>
+      </Grid>
+      <Typography variant="h5" style={{ color: '#808080', textAlign: 'right', marginLeft: '400px' }}>
+        <br />
+        <br />
+        此為 AI 自動分析，僅確認關鍵字皆符合，請再次確認評鑑內容已填寫完整
+        <br />
+      </Typography>
     </Grid>
   );
 };

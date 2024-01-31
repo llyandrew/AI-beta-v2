@@ -1,7 +1,7 @@
 // project import
 import authpage from './authpage';
 import dashboard from './dashboard';
-import mainpage from './mainpage'
+import mainpage from './mainpage';
 
 // ==============================|| MENU ITEMS ||============================== //
 
