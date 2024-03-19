@@ -1,5 +1,7 @@
 import React from 'react';
+import { Cookies } from 'react-cookie';
 import { Link as RouterLink } from 'react-router-dom';
+import { callApi } from 'utils/apiCaller';
 
 // material-ui
 import {
@@ -12,7 +14,7 @@ import {
   Link,
   IconButton,
   InputAdornment,
-  InputLabel,
+  // InputLabel,
   OutlinedInput,
   Stack,
   Typography
@@ -32,6 +34,8 @@ import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
+  const cookies = new Cookies();
+
   const [checked, setChecked] = React.useState(false);
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -57,6 +61,20 @@ const AuthLogin = () => {
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
+            const data = await callApi('/login', 'POST', {
+              body: JSON.stringify({
+                username: values.email,
+                password: values.password
+              }),
+              withToken: false
+            });
+
+            if (data?.token) {
+              cookies.set('userToken', data.token, { path: '/' });
+              console.log(data);
+            } else {
+              throw new Error('GG');
+            }
             setStatus({ success: false });
             setSubmitting(false);
           } catch (err) {
@@ -71,7 +89,7 @@ const AuthLogin = () => {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="email-login">帳號</InputLabel>
+                  {/* <InputLabel htmlFor="email-login">帳號</InputLabel> */}
                   <OutlinedInput
                     id="email-login"
                     type="email"
@@ -79,7 +97,7 @@ const AuthLogin = () => {
                     name="email"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder="輸入帳號"
+                    placeholder="電子郵件"
                     fullWidth
                     error={Boolean(touched.email && errors.email)}
                   />
@@ -92,7 +110,7 @@ const AuthLogin = () => {
               </Grid>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="password-login">密碼</InputLabel>
+                  {/* <InputLabel htmlFor="password-login">密碼</InputLabel> */}
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.password && errors.password)}
@@ -115,7 +133,7 @@ const AuthLogin = () => {
                         </IconButton>
                       </InputAdornment>
                     }
-                    placeholder="輸入密碼"
+                    placeholder="密碼"
                   />
                   {touched.password && errors.password && (
                     <FormHelperText error id="standard-weight-helper-text-password-login">
@@ -137,7 +155,7 @@ const AuthLogin = () => {
                         size="small"
                       />
                     }
-                    label={<Typography variant="h6">保持登入</Typography>}
+                    label={<Typography variant="h6">記住帳號與密碼</Typography>}
                   />
                   <Link variant="h6" component={RouterLink} to="" color="text.primary">
                     忘記密碼?
@@ -151,7 +169,16 @@ const AuthLogin = () => {
               )}
               <Grid item xs={12}>
                 <AnimateButton>
-                  <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
+                  <Button
+                    disableElevation
+                    disabled={isSubmitting}
+                    fullWidth
+                    size="large"
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    style={{ borderRadius: '999px', backgroundColor: '#00B4BC' }}
+                  >
                     登入
                   </Button>
                 </AnimateButton>
@@ -163,7 +190,7 @@ const AuthLogin = () => {
               </Grid>
               <Grid item xs={12}>
                 <FirebaseSocial />
-              </Grid> 
+              </Grid>
             </Grid>
           </form>
         )}

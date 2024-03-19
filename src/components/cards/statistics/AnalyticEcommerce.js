@@ -11,18 +11,23 @@ import { RiseOutlined, FallOutlined } from '@ant-design/icons';
 
 // ==============================|| STATISTICS - ECOMMERCE CARD  ||============================== //
 
-const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }) => (
-  <MainCard contentSX={{ p: 2.25 }}>
+const AnalyticEcommerce = ({ color, title, count, percentage, year, isLoss, extra, children }) => (
+  <MainCard contentSX={{ p: 2.25, position: 'relative' }}>
     <Stack spacing={0.5}>
-      <Typography variant="h5" color="textSecondary">
+      <Typography variant="h4" color="textSecondary">
         {title}
       </Typography>
       <Grid container alignItems="center">
         <Grid item>
-          <Typography variant="h3" color="inherit">
+          <Typography variant="h2" color="inherit">
             {count}
           </Typography>
         </Grid>
+        {year && (
+          <Typography variant="h4" color="textSecondary" sx={{ ml: 0.75, pl: 1 }}>
+            {year}
+          </Typography>
+        )}
         {percentage && (
           <Grid item>
             <Chip
@@ -35,17 +40,20 @@ const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }) =
                 </>
               }
               label={`${percentage}%`}
-              sx={{ ml: 1.25, pl: 1 }}
+              sx={{ ml: 1.25, pl: 1, backgroundColor: '#00B4BC' }}
               size="small"
             />
           </Grid>
         )}
       </Grid>
     </Stack>
-    <Box sx={{ pt: 4.25 }}>
+    <Box sx={{ pt: 3, position: 'absolute', top: 0, right: 0 }}>
+      {children} {/* Render additional components or buttons here */}
+    </Box>
+    <Box sx={{ pt: 3 }}>
       <Typography variant="caption" color="textSecondary">
         {' '}
-        <Typography component="span" variant="h5" sx={{ color: `${color || 'primary'}.main` }}>
+        <Typography component="span" variant="h5" sx={{ color: '#00B4BC' }}>
           {extra}
         </Typography>{' '}
       </Typography>

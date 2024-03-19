@@ -142,9 +142,6 @@ const Profile = () => {
                             <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
                             <Stack>
                               <Typography variant="h6">Andrew Lin</Typography>
-                              <Typography variant="body2" color="textSecondary">
-                                UI/UX Designer
-                              </Typography>
                             </Stack>
                           </Stack>
                         </Grid>
@@ -168,7 +165,7 @@ const Profile = () => {
                                 textTransform: 'capitalize'
                               }}
                               icon={<UserOutlined style={{ marginBottom: 0, marginRight: '10px' }} />}
-                              label="Profile"
+                              label="帳戶資訊"
                               {...a11yProps(0)}
                             />
                             <Tab
@@ -180,7 +177,7 @@ const Profile = () => {
                                 textTransform: 'capitalize'
                               }}
                               icon={<SettingOutlined style={{ marginBottom: 0, marginRight: '10px' }} />}
-                              label="Setting"
+                              label="設定"
                               {...a11yProps(1)}
                             />
                           </Tabs>

@@ -30,7 +30,7 @@ const areaChartOptions = {
 
 // ==============================|| INCOME AREA CHART ||============================== //
 
-const IncomeAreaChart = ({ slot }) => {
+const WeekMonthChart = ({ slot }) => {
   const theme = useTheme();
 
   const { primary, secondary } = theme.palette.text;
@@ -41,7 +41,7 @@ const IncomeAreaChart = ({ slot }) => {
   useEffect(() => {
     setOptions((prevState) => ({
       ...prevState,
-      colors: [theme.palette.primary.main, theme.palette.primary[700]],
+      colors: ['#00B4BC'],
       xaxis: {
         categories:
           slot === 'month'
@@ -114,8 +114,8 @@ const IncomeAreaChart = ({ slot }) => {
   return <ReactApexChart options={options} series={series} type="area" height={450} />;
 };
 
-IncomeAreaChart.propTypes = {
+WeekMonthChart.propTypes = {
   slot: PropTypes.string
 };
 
-export default IncomeAreaChart;
+export default WeekMonthChart;
