@@ -9,10 +9,10 @@ import {
   FormControl,
   FormHelperText,
   Grid,
-//  Link,
+  //  Link,
   IconButton,
   InputAdornment,
-  InputLabel,
+  // InputLabel,
   OutlinedInput,
   Stack,
   Typography
@@ -21,6 +21,7 @@ import {
 // third party
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { callApi } from 'utils/apiCaller';
 
 // project import
 import FirebaseSocial from './FirebaseSocial';
@@ -71,6 +72,23 @@ const AuthRegister = () => {
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
+            const data = await callApi('/signup', 'POST', {
+              body: JSON.stringify({
+                username: values.email,
+                password: values.password,
+                firstName: values.firstname,
+                lastName: values.lastname,
+                organizationName: values.company
+              }),
+              withToken: false
+            });
+
+            if (data?.token) {
+              cookies.set('userToken', data.token, { path: '/' });
+              console.log(data);
+            } else {
+              throw new Error('GG');
+            }
             setStatus({ success: false });
             setSubmitting(false);
           } catch (err) {
@@ -86,7 +104,7 @@ const AuthRegister = () => {
             <Grid container spacing={3}>
               <Grid item xs={12} md={6}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="firstname-signup">姓氏*</InputLabel>
+                  {/* <InputLabel htmlFor="firstname-signup">姓氏*</InputLabel> */}
                   <OutlinedInput
                     id="firstname-login"
                     type="firstname"
@@ -94,7 +112,7 @@ const AuthRegister = () => {
                     name="firstname"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder=""
+                    placeholder="姓氏*"
                     fullWidth
                     error={Boolean(touched.firstname && errors.firstname)}
                   />
@@ -107,7 +125,7 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12} md={6}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="lastname-signup">名字*</InputLabel>
+                  {/* <InputLabel htmlFor="lastname-signup">名字*</InputLabel> */}
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.lastname && errors.lastname)}
@@ -117,7 +135,7 @@ const AuthRegister = () => {
                     name="lastname"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder=""
+                    placeholder="名字*"
                     inputProps={{}}
                   />
                   {touched.lastname && errors.lastname && (
@@ -129,7 +147,7 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="company-signup">機構名稱</InputLabel>
+                  {/* <InputLabel htmlFor="company-signup">機構名稱</InputLabel> */}
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.company && errors.company)}
@@ -138,7 +156,7 @@ const AuthRegister = () => {
                     name="company"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder=""
+                    placeholder="機構名稱"
                     inputProps={{}}
                   />
                   {touched.company && errors.company && (
@@ -150,7 +168,7 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="email-signup">電子郵件*</InputLabel>
+                  {/* <InputLabel htmlFor="email-signup">電子郵件*</InputLabel> */}
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.email && errors.email)}
@@ -160,7 +178,7 @@ const AuthRegister = () => {
                     name="email"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder=""
+                    placeholder="電子郵件*"
                     inputProps={{}}
                   />
                   {touched.email && errors.email && (
@@ -172,7 +190,7 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="password-signup">密碼</InputLabel>
+                  {/* <InputLabel htmlFor="password-signup">密碼</InputLabel> */}
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.password && errors.password)}
@@ -198,7 +216,7 @@ const AuthRegister = () => {
                         </IconButton>
                       </InputAdornment>
                     }
-                    placeholder=""
+                    placeholder="密碼"
                     inputProps={{}}
                   />
                   {touched.password && errors.password && (
@@ -227,7 +245,16 @@ const AuthRegister = () => {
               )}
               <Grid item xs={12}>
                 <AnimateButton>
-                  <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
+                  <Button
+                    disableElevation
+                    disabled={isSubmitting}
+                    fullWidth
+                    size="large"
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    style={{ borderRadius: '999px', backgroundColor: '#00B4BC' }}
+                  >
                     註冊
                   </Button>
                 </AnimateButton>

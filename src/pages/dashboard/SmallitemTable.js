@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 // material-ui
 import { Box, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
+import ExpandLessOutlinedIcon from '@mui/icons-material/ExpandLessOutlined';
 
 // third-party
 //import NumberFormat from 'react-number-format';
@@ -96,13 +98,13 @@ const headCells = [
     id: 'trackingNo',
     align: 'left',
     disablePadding: false,
-    label: '項目編號'
+    label: '編號'
   },
   {
     id: 'name',
     align: 'left',
     disablePadding: true,
-    label: '項目細項'
+    label: '項目'
   },
   {
     id: 'fat',
@@ -185,9 +187,19 @@ OrderStatus.propTypes = {
 const OrderTable = ({ table }) => {
   const [order] = useState('asc');
   const [orderBy] = useState('trackingNo');
-  const [selected] = useState([]);
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [expandedRow, setExpandedRow] = useState(null);
 
-  const isSelected = (trackingNo) => selected.indexOf(trackingNo) !== -1;
+  const handleRowClick = (trackingNo) => {
+    setExpandedRow((prevExpandedRow) => (prevExpandedRow === trackingNo ? null : trackingNo));
+    if (selectedRow === trackingNo) {
+      setSelectedRow(null);
+    } else {
+      setSelectedRow(trackingNo);
+    }
+  };
+
+  const isSelected = (trackingNo) => selectedRow === trackingNo;
 
   return (
     <Box>
@@ -222,29 +234,54 @@ const OrderTable = ({ table }) => {
               const labelId = `enhanced-table-checkbox-${index}`;
 
               return (
-                <TableRow
-                  hover
-                  role="checkbox"
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  aria-checked={isItemSelected}
-                  tabIndex={-1}
-                  key={row.trackingNo}
-                  selected={isItemSelected}
-                >
-                  <TableCell component="th" id={labelId} scope="row" align="left">
-                    <Link color="secondary" component={RouterLink} to="">
-                      {row.trackingNo}
-                    </Link>
-                  </TableCell>
-                  <TableCell align="left">{row.name}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="left">
-                    <OrderStatus status={row.carbs} />
-                  </TableCell>
-                  {/* <TableCell align="right">
+                <React.Fragment key={row.trackingNo}>
+                  <TableRow
+                    hover
+                    onClick={() => handleRowClick(row.trackingNo)}
+                    role="checkbox"
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    aria-checked={isItemSelected}
+                    tabIndex={-1}
+                    key={row.trackingNo}
+                    selected={isItemSelected}
+                  >
+                    <TableCell component="th" id={labelId} scope="row" align="left">
+                      <Link color="secondary" component={RouterLink} to="">
+                        {row.trackingNo}
+                      </Link>
+                    </TableCell>
+                    <TableCell align="left">{row.name}</TableCell>
+                    <TableCell align="right">{row.fat}</TableCell>
+                    <TableCell align="left">
+                      <OrderStatus status={row.carbs} />
+                    </TableCell>
+                    <TableCell display="flex" justifyContent="flex-end" marginRight={1}>
+                      {expandedRow === row.trackingNo ? (
+                        <ExpandLessOutlinedIcon color="disabled" />
+                      ) : (
+                        <ExpandMoreOutlinedIcon color="disabled" />
+                      )}
+                    </TableCell>
+                    {/* <TableCell align="right">
                     <NumberFormat value={row.protein} displayType="text" thousandSeparator prefix="$" />
                   </TableCell> */}
-                </TableRow>
+                  </TableRow>
+                  {isItemSelected && (
+                    <TableRow>
+                      <TableCell colSpan={4} align="left">
+                        <Box margin={1} marginLeft="14.6%">
+                          {' '}
+                          <Typography variant="h6" gutterBottom component="div" color="textSecondary">
+                            缺少所需評鑑關鍵字:
+                          </Typography>
+                          <Typography variant="body2" component="div" color="textSecondary">
+                            服務理念、照館專員、復健服務
+                          </Typography>
+                        </Box>
+                      </TableCell>
+                    </TableRow>
+                  )}
+                </React.Fragment>
               );
             })}
           </TableBody>
@@ -252,6 +289,10 @@ const OrderTable = ({ table }) => {
       </TableContainer>
     </Box>
   );
+};
+
+OrderTable.propTypes = {
+  table: PropTypes.array.isRequired
 };
 
 export default OrderTable;

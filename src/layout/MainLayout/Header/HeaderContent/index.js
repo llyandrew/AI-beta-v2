@@ -1,12 +1,13 @@
 // material-ui
-import { Box, useMediaQuery } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 //import { GithubOutlined } from '@ant-design/icons';
 
 // project import
-import Search from './Search';
+// import Search from './Search';
 import Profile from './Profile';
-import Notification from './Notification';
+// import Notification from './Notification';
 import MobileSection from './MobileSection';
+import Logo from 'components/Logo';
 
 // ==============================|| HEADER - CONTENT ||============================== //
 
@@ -15,12 +16,20 @@ const HeaderContent = () => {
 
   return (
     <>
-      {!matchesXs && <Search />}
-      {matchesXs && <Box sx={{ width: '100%', ml: 1 }} />}
+      {/* {!matchesXs && <Search />} */}
+      <Box sx={{ display: 'flex' }}>
+        <Logo />
+        <Typography variant="h3" color="textSecondary" style={{ marginTop: '4px', marginLeft: '10px' }}>
+          評鑑雲
+        </Typography>
+      </Box>
 
-      <Notification />
-      {!matchesXs && <Profile />}
-      {matchesXs && <MobileSection />}
+      <Box sx={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
+        {' '}
+        {/* <Notification /> */}
+        {!matchesXs && <Profile />}
+        {matchesXs && <MobileSection />}
+      </Box>
     </>
   );
 };
