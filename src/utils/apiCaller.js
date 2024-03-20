@@ -1,5 +1,5 @@
 import { Cookies } from 'react-cookie';
-const BASE_URL = 'http://localhost:2541/api'
+const BASE_URL = 'http://localhost:2541/api';
 
 export const callApi = async (endPoint = '', method = 'GET', props = {}) => {
   try {
@@ -10,7 +10,7 @@ export const callApi = async (endPoint = '', method = 'GET', props = {}) => {
       'content-type': contentType
     };
 
-    console.log("withToken",withToken)
+    console.log('withToken', withToken);
     if (withToken) {
       const userToken = cookies.get('userToken');
       headers.Authorization = userToken || '';
